@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #62a4ff, #ffe222);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: flex; /* Using CSS Grid instead of flex */
+  gap: 15px; /* Adds space between squares */
+  justify-content: center;
+  margin: 20px 0;
+  max-width: 100%; /* Ensures grid is responsive and doesn't overflow */
+  flex-wrap: wrap;
+}
+
+.square {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+  font-size: 30px;
+  font-weight: bold;
+  transition: transform 0.3s, background-color 0.3s;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.blocked {
+  background-color: #f0f0f0;
+  color: #ccc;
+  transform: scale(0.9);
+}
+
+.lock-icon {
+  width: 50%;
+  height: auto;
+}
+
+.active {
+  background-color: #ffe082;
+  color: #000;
+}
+
+.final-img {
+  width: 80%; /* Ensure the image fits within the square */
+  height: auto;
+  max-height: 80%;
+}
+
+.question-section {
+  margin: 20px 0;
+  font-size: 18px;
+  color: #555;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #64b5f6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #42a5f5;
+}
+
+.message {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-top: 20px;
+}
