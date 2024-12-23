@@ -7,21 +7,34 @@ const initialSquares = Array(NUM_OF_SQUARES).fill({
   content: "",
 });
 const questions = [
-  { question: "What is 2 + 2?", answer: "4", content: "📚📝🔚🎉" },
   {
-    question: "What is the capital of France?",
-    answer: "Paris",
+    question: "Como le gusta a Ainara el cafe por la mañana?",
+    answer: "frio",
+    alternativeAnswer: "muy frio",
+    content: "📚📝🔚🎉",
+  },
+  {
+    question: "La especia que no debe faltar nunca en la mesa de esta casa",
+    answer: "Piripiri",
+    alternativeAnswer: "piri piri",
     content: "👩🏻👨🏼👣🚕",
   },
   {
-    question: "What color is the sky?",
-    answer: "Blue",
-    content: "📍⌚☕🪪",
+    question: "Color favorito de Cristhian?",
+    answer: "Verde vox",
+    alternativeAnswer: "Verde kawa",
+    content: "🪑⌚☕VIP",
   },
-  { question: "What is 5 * 3?", answer: "15", content: "🧳🎫✈️🛂" },
   {
-    question: "What is the last letter of 'apple'?",
-    answer: "e",
+    question: "Que edad tiene el cocinero favorito de Vero?",
+    answer: "49",
+    alternativeAnswer: "cuarenta y nueve",
+    content: "🧳🎫✈️🛂",
+  },
+  {
+    question: "Numero de shots que van en el cafe de tus padres?",
+    answer: "3",
+    alternativeAnswer: "tres",
     content: "🇹🇷",
   },
 ];
@@ -47,7 +60,10 @@ function App() {
     if (currentLevel < questions.length) {
       const currentQuestion = questions[currentLevel];
       if (
-        userInput.trim().toLowerCase() === currentQuestion.answer.toLowerCase()
+        userInput.trim().toLowerCase() ===
+          currentQuestion.answer.toLowerCase() ||
+        userInput.trim().toLowerCase() ===
+          currentQuestion.alternativeAnswer.toLowerCase()
       ) {
         const updatedSquares = [...squares];
         updatedSquares[currentLevel] = {
@@ -61,8 +77,28 @@ function App() {
         // If this is the final answer, show the final message after 4 seconds
         if (currentLevel === NUM_OF_SQUARES - 1) {
           setTimeout(() => {
-            setFinalMessage("🎁🎄Viaje a Estambul, Turquia 🎁🎄");
-          }, 3500);
+            setFinalMessage(
+              <h2>
+                Has completado el juego. Chiquita maquina oiste! 🎉
+                <br />
+                <img
+                  src="/sticker.webp"
+                  style={{ maxHeight: "170px" }}
+                  alt="sticker"
+                />
+                <br />
+                🎁 Tu premio: Un viaje de 1 semana a Estambul, TURQUíA. 🕌{" "}
+                <br />
+                🎄¡Feliz Navidad!🎄
+                <br />
+                <img
+                  src="/sticker2.webp"
+                  style={{ maxHeight: "120px" }}
+                  alt="sticker"
+                />
+              </h2>
+            );
+          }, 2300);
         }
       } else {
         setMessage("Tu eres tonta? Prueba otra vez!");
@@ -80,11 +116,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Puzzle de Navidad para Aileeeeeeen</h1>
+      <h1 style={{ color: "whitesmoke" }}>
+        Puzzle de Navidad para Aileeeeennnnn
+      </h1>
       <div className="grid">
         {squares.map((square, index) => (
           <>
-            <span style={{ color: "#c00", fontSize: "11px" }}>{index + 1}</span>
             <div
               key={index}
               className={`square ${square.blocked ? "blocked" : "active"}`}
@@ -94,7 +131,11 @@ function App() {
           </>
         ))}
       </div>
-      {message && <p className="message">{message}</p>}
+      {message && (
+        <p className="message" style={{ color: "whitesmoke" }}>
+          {message}
+        </p>
+      )}
       {currentLevel < questions.length ? (
         <div className="question-section">
           <p>
@@ -110,7 +151,13 @@ function App() {
           </form>
         </div>
       ) : (
-        <div>{finalMessage && <h2>{finalMessage}</h2>}</div>
+        <div>
+          {finalMessage && (
+            <h3 style={{ color: "whitesmoke", fontSize: "16px" }}>
+              {finalMessage}
+            </h3>
+          )}
+        </div>
       )}
     </div>
   );
